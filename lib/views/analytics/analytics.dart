@@ -20,7 +20,7 @@ class AnalyticsScreen extends StatelessWidget {
                 fontSize: 22.0,
                 fontWeight: FontWeight.w500,
               ),
-              Divider(),
+              const Divider(),
               const SizedBox(height: 20.0),
               const Wrap(
                 alignment: WrapAlignment.start,
@@ -68,14 +68,14 @@ class AnalyticsScreen extends StatelessWidget {
                   ),
                 ],
               ),
-              Divider(),
+              const Divider(),
               const SizedBox(height: 20.0),
               const CustomTextWidget(
                 text: 'Weekly Analytics',
                 fontSize: 22.0,
                 fontWeight: FontWeight.w500,
               ),
-              Divider(),
+              const Divider(),
               const SizedBox(height: 20.0),
               Wrap(
                 children: [
@@ -100,7 +100,7 @@ class AnalyticsScreen extends StatelessWidget {
                   ),
                 ],
               ),
-              Divider(),
+              const Divider(),
             ],
           ),
         ),

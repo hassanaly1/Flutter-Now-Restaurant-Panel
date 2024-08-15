@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:now_restaurant_panel/helpers/appcolors.dart';
+import 'package:now_restaurant_panel/reusable_container.dart';
 
 class ReUsableTextField extends StatelessWidget {
   final String hintText;
@@ -39,17 +40,9 @@ class ReUsableTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: context.height / 21,
-      width: context.width / 1,
-      decoration:
-          BoxDecoration(borderRadius: BorderRadius.circular(25), boxShadow: [
-        BoxShadow(
-            blurRadius: 2,
-            spreadRadius: 3,
-            offset: const Offset(0, 1),
-            color: AppColors.blackColor.withOpacity(0.1))
-      ]),
+    return ReUsableContainer(
+      showBackgroundShadow: showBackgroundShadow,
+      verticalPadding: context.height * 0.012,
       child: TextFormField(
         readOnly: readOnly ?? false,
         onTap: onTap,
@@ -72,25 +65,15 @@ class ReUsableTextField extends StatelessWidget {
         decoration: InputDecoration(
           // contentPadding: EdgeInsets.symmetric(vertical: 4.0),
           // isCollapsed: true,
-          filled: true,
-          fillColor: AppColors.fieldColor,
           isDense: true,
-          border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(20),
-              borderSide: BorderSide(color: AppColors.transparent)),
-          enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(20),
-              borderSide: BorderSide(color: AppColors.transparent)),
-          focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(20),
-              borderSide: BorderSide(color: AppColors.transparent)),
+          border: const OutlineInputBorder(borderSide: BorderSide.none),
           prefixIcon: prefixIcon,
           suffixIcon: suffixIcon,
           hintText: hintText,
           hintStyle: TextStyle(
             fontFamily: 'Poppins',
-            fontSize: 14,
-            fontWeight: FontWeight.normal,
+            fontSize: 10,
+            fontWeight: FontWeight.w300,
             color: AppColors.lightTextColor,
           ),
           errorStyle: const TextStyle(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:now_restaurant_panel/views/analytics/analytics.dart';
 import 'package:now_restaurant_panel/views/menus/menus.dart';
+import 'package:now_restaurant_panel/views/orders/orders.dart';
 import 'package:sidebarx/sidebarx.dart';
 
 void main() {
@@ -17,11 +18,13 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         // primaryColor: primaryColor,
         // canvasColor: canvasColor,
+
         scaffoldBackgroundColor: Colors.grey.shade200,
         textTheme: const TextTheme(
           headlineSmall: TextStyle(
             color: Colors.white,
             fontSize: 46,
+            fontFamily: 'Poppins',
             fontWeight: FontWeight.w800,
           ),
         ),
@@ -200,7 +203,6 @@ class MySidebarX extends StatelessWidget {
 
 class _ScreensExample extends StatelessWidget {
   const _ScreensExample({
-    super.key,
     required this.controller,
   });
 
@@ -218,11 +220,11 @@ class _ScreensExample extends StatelessWidget {
           case 1:
             return const MyMenuScreen();
           case 2:
-            return const Text('People');
+            return const MyOrdersScreen();
           case 3:
-            return const Text('Favorites');
+            return const MyMenuScreen();
           case 4:
-            return const Text('Custom iconWidget');
+            return const MyMenuScreen();
           default:
             return Text(pageTitle);
         }
