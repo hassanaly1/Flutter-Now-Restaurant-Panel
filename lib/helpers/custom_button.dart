@@ -3,7 +3,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 import 'package:now_restaurant_panel/helpers/appcolors.dart';
 import 'package:now_restaurant_panel/helpers/custom_text.dart';
-import 'package:now_restaurant_panel/reusable_container.dart';
+import 'package:now_restaurant_panel/helpers/reusable_container.dart';
 
 class CustomButton extends StatelessWidget {
   final String buttonText;

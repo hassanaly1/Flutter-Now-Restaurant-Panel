@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:now_restaurant_panel/helpers/custom_text.dart';
 import 'package:now_restaurant_panel/views/analytics/bar_chart.dart';
+import 'package:now_restaurant_panel/views/analytics/graph.dart';
 import 'package:now_restaurant_panel/views/analytics/pie_chart.dart';
 
 class AnalyticsScreen extends StatelessWidget {
@@ -15,31 +17,71 @@ class AnalyticsScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const CustomTextWidget(
-                text: 'Restaurant Analytics',
-                fontSize: 22.0,
-                fontWeight: FontWeight.w500,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Flexible(
+                    child: CustomTextWidget(
+                      text: 'Restaurant Analytics',
+                      fontSize: 22.0,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                  if (context.width > 1100)
+                    Row(
+                      children: [
+                        Container(
+                            margin:
+                                const EdgeInsets.symmetric(horizontal: 16.0),
+                            padding: const EdgeInsets.all(8.0),
+                            decoration: BoxDecoration(
+                                color: Colors.grey.shade100,
+                                borderRadius: BorderRadius.circular(16.0),
+                                border: Border.all(color: Colors.black12)),
+                            child: const Row(
+                              children: [
+                                CircleAvatar(
+                                  backgroundImage: NetworkImage(
+                                      'https://bcassetcdn.com/public/blog/wp-content/uploads/2019/07/18094837/golden-eatery.png'),
+                                ),
+                                SizedBox(width: 4.0),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    CustomTextWidget(
+                                      text: 'Golder Eatery',
+                                      fontSize: 14.0,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                    CustomTextWidget(
+                                      text: 'goldereatery@restaurant.com',
+                                      fontSize: 10.0,
+                                      textColor: Colors.black54,
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            )),
+                        IconButton(
+                            onPressed: () {},
+                            icon: const Icon(
+                              Icons.logout_outlined,
+                              color: Colors.red,
+                            )),
+                      ],
+                    )
+                ],
               ),
               const Divider(),
               const SizedBox(height: 20.0),
               const Wrap(
-                alignment: WrapAlignment.start,
+                alignment: WrapAlignment.center,
                 crossAxisAlignment: WrapCrossAlignment.center,
                 children: [
-                  CustomStatsContainer(
-                    backgroundColor: Colors.green,
-                    text: 'Total Sales',
-                    stats: 14,
-                  ),
                   CustomStatsContainer(
                     backgroundColor: Colors.orange,
                     text: 'Total Revenue',
                     stats: 28,
-                  ),
-                  CustomStatsContainer(
-                    backgroundColor: Colors.lightBlueAccent,
-                    text: 'Cost',
-                    stats: 158,
                   ),
                   CustomStatsContainer(
                     backgroundColor: Colors.teal,
@@ -81,7 +123,7 @@ class AnalyticsScreen extends StatelessWidget {
                 children: [
                   Container(
                     height: 250,
-                    width: 500,
+                    width: 700,
                     decoration: BoxDecoration(
                       color: Colors.grey.shade200,
                       border: Border.all(color: Colors.black12),
@@ -91,7 +133,7 @@ class AnalyticsScreen extends StatelessWidget {
                   const SizedBox(width: 24.0),
                   Container(
                     height: 250,
-                    width: 500,
+                    width: 700,
                     decoration: BoxDecoration(
                       color: Colors.grey.shade200,
                       border: Border.all(color: Colors.black12),
@@ -101,6 +143,7 @@ class AnalyticsScreen extends StatelessWidget {
                 ],
               ),
               const Divider(),
+              const SalesChart(),
             ],
           ),
         ),

@@ -1,6 +1,5 @@
 import 'dart:math';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:now_restaurant_panel/helpers/custom_text.dart';
@@ -29,39 +28,14 @@ class _MyOrdersScreenState extends State<MyOrdersScreen> {
       length: 3,
       child: Scaffold(
         body: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(16.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const CustomTextWidget(
-                    text: 'Orders Management',
-                    fontSize: 22.0,
-                    fontWeight: FontWeight.w500,
-                  ),
-                  Container(
-                    width: 300,
-                    margin: const EdgeInsets.symmetric(horizontal: 16.0),
-                    padding: const EdgeInsets.all(4.0),
-                    height: 50,
-                    decoration: BoxDecoration(
-                        color: Colors.grey.shade100,
-                        borderRadius: BorderRadius.circular(16.0),
-                        border: Border.all(color: Colors.black12)),
-                    child: TextFormField(
-                      style: const TextStyle(fontFamily: 'Poppins'),
-                      decoration: const InputDecoration(
-                        border: InputBorder.none,
-                        hintText: 'Search Menu',
-                        hintStyle: TextStyle(
-                            fontFamily: 'Poppins', color: Colors.black45),
-                        prefixIcon: Icon(CupertinoIcons.search),
-                      ),
-                    ),
-                  ),
-                ],
+              const CustomTextWidget(
+                text: 'Orders Management',
+                fontSize: 22.0,
+                fontWeight: FontWeight.w500,
               ),
               const Divider(),
               const CustomTabBar(

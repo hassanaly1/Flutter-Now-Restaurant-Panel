@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:now_restaurant_panel/views/analytics/analytics.dart';
 import 'package:now_restaurant_panel/views/menus/menus.dart';
 import 'package:now_restaurant_panel/views/orders/orders.dart';
+import 'package:now_restaurant_panel/views/profile/profile.dart';
+import 'package:now_restaurant_panel/views/promotions/promotions.dart';
 import 'package:sidebarx/sidebarx.dart';
 
 void main() {
@@ -13,7 +16,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
         // primaryColor: primaryColor,
@@ -44,7 +47,7 @@ class SidebarXExampleApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return Builder(
       builder: (context) {
-        final isSmallScreen = MediaQuery.of(context).size.width < 900;
+        final isSmallScreen = context.width < 1100;
         return Scaffold(
           key: _key,
           appBar: isSmallScreen
@@ -161,7 +164,6 @@ class MySidebarX extends StatelessWidget {
           label: 'Dashboard',
           onTap: () {
             _controller.selectIndex(0);
-            print(_controller.selectedIndex);
           },
         ),
         SidebarXItem(
@@ -169,7 +171,6 @@ class MySidebarX extends StatelessWidget {
           label: 'Menu',
           onTap: () {
             _controller.selectIndex(1);
-            print(_controller.selectedIndex);
           },
         ),
         SidebarXItem(
@@ -177,7 +178,6 @@ class MySidebarX extends StatelessWidget {
           label: 'Orders',
           onTap: () {
             _controller.selectIndex(2);
-            print(_controller.selectedIndex);
           },
         ),
         SidebarXItem(
@@ -185,15 +185,13 @@ class MySidebarX extends StatelessWidget {
           label: 'Promotions',
           onTap: () {
             _controller.selectIndex(3);
-            print(_controller.selectedIndex);
           },
         ),
         SidebarXItem(
-          icon: Icons.reviews,
-          label: 'Reviews',
+          icon: Icons.person_2_rounded,
+          label: 'Profile',
           onTap: () {
             _controller.selectIndex(4);
-            print(_controller.selectedIndex);
           },
         ),
       ],
@@ -222,9 +220,9 @@ class _ScreensExample extends StatelessWidget {
           case 2:
             return const MyOrdersScreen();
           case 3:
-            return const MyMenuScreen();
+            return const MyPromotionsScreen();
           case 4:
-            return const MyMenuScreen();
+            return const MyProfileScreen();
           default:
             return Text(pageTitle);
         }

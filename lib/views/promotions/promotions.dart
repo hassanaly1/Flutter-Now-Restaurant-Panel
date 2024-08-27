@@ -1,7 +1,3 @@
-import 'dart:math' as math;
-import 'dart:ui';
-
-import 'package:animations/animations.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -10,10 +6,10 @@ import 'package:now_restaurant_panel/helpers/custom_button.dart';
 import 'package:now_restaurant_panel/helpers/custom_text.dart';
 import 'package:now_restaurant_panel/helpers/heading_and_textfield.dart';
 import 'package:now_restaurant_panel/helpers/reusable_container.dart';
-import 'package:now_restaurant_panel/views/menus/menus_detail.dart';
+import 'package:now_restaurant_panel/views/menus/menus.dart';
 
-class MyMenuScreen extends StatelessWidget {
-  const MyMenuScreen({super.key});
+class MyPromotionsScreen extends StatelessWidget {
+  const MyPromotionsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +22,7 @@ class MyMenuScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const CustomTextWidget(
-                text: 'Menu Management',
+                text: 'Promotions Management',
                 fontSize: 22.0,
                 fontWeight: FontWeight.w500,
               ),
@@ -48,7 +44,7 @@ class MyMenuScreen extends StatelessWidget {
                       style: const TextStyle(fontFamily: 'Poppins'),
                       decoration: const InputDecoration(
                         border: InputBorder.none,
-                        hintText: 'Search Menu',
+                        hintText: 'Search Promotions',
                         hintStyle: TextStyle(
                             fontFamily: 'Poppins',
                             fontSize: 12.0,
@@ -59,7 +55,7 @@ class MyMenuScreen extends StatelessWidget {
                   ),
                   IconButton(
                     icon: const Icon(CupertinoIcons.add),
-                    onPressed: () => openAddMenuDialog(context),
+                    onPressed: () => openAddPromotionDialog(context),
                   ),
                 ],
               ),
@@ -77,7 +73,7 @@ class MyMenuScreen extends StatelessWidget {
                   child: Column(
                     children: [
                       const CustomTextWidget(
-                        text: 'Menus',
+                        text: 'Promotions',
                         fontSize: 22.0,
                         fontWeight: FontWeight.w500,
                       ),
@@ -88,22 +84,124 @@ class MyMenuScreen extends StatelessWidget {
                             spacing: 8.0,
                             runSpacing: 8.0,
                             children: List.generate(20, (index) {
-                              return OpenContainer(
-                                openColor: Colors.transparent,
-                                closedColor: Colors.transparent,
-                                transitionDuration:
-                                    const Duration(milliseconds: 500),
-                                closedBuilder: (context, action) => InkWell(
-                                  onTap: action,
-                                  child: CustomMenuWidget(index: index),
-                                ),
-                                openBuilder: (context, action) {
-                                  return const MenusDetailScreen();
-                                },
-                                openElevation: 0,
-                                closedElevation: 0,
-                                closedShape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(0),
+                              return Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Column(
+                                  children: [
+                                    Stack(
+                                      children: [
+                                        Container(
+                                          height: 180,
+                                          width: 200,
+                                          decoration: BoxDecoration(
+                                            color: Colors.grey.shade200,
+                                            borderRadius:
+                                                const BorderRadius.only(
+                                              topLeft: Radius.circular(16.0),
+                                              topRight: Radius.circular(16.0),
+                                            ),
+                                            border: Border.all(
+                                              color: Colors.black12,
+                                            ),
+                                            image: const DecorationImage(
+                                              image: NetworkImage(
+                                                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgy4fA6FcmVFonQAeLKnoscu8yL3xKoSLJyQ&s',
+                                              ),
+                                              fit: BoxFit.cover,
+                                            ),
+                                          ),
+                                        ),
+                                        Positioned(
+                                            top: 8.0,
+                                            right: 8.0,
+                                            child: InkWell(
+                                              onTap: () {},
+                                              child: Container(
+                                                padding:
+                                                    const EdgeInsets.all(4.0),
+                                                decoration: const BoxDecoration(
+                                                    shape: BoxShape.circle,
+                                                    color: Colors.white70),
+                                                child: Icon(
+                                                  Icons.edit,
+                                                  color: AppColors.primaryColor,
+                                                  size: 16.0,
+                                                ),
+                                              ),
+                                            )),
+                                      ],
+                                    ),
+                                    Container(
+                                      width: 200,
+                                      decoration: BoxDecoration(
+                                        color: Colors.grey.shade200,
+                                        border:
+                                            Border.all(color: Colors.black12),
+                                        borderRadius: const BorderRadius.only(
+                                          bottomLeft: Radius.circular(16.0),
+                                          bottomRight: Radius.circular(16.0),
+                                        ),
+                                      ),
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            CustomTextWidget(
+                                              text: 'Promotion ${index + 1}',
+                                              fontSize: 16.0,
+                                              fontWeight: FontWeight.w500,
+                                            ),
+                                            const SizedBox(height: 8.0),
+                                            const CustomTextWidget(
+                                              text: 'Product: Alfredo Pasta',
+                                              fontSize: 12.0,
+                                              fontWeight: FontWeight.w400,
+                                            ),
+                                            const SizedBox(height: 8.0),
+                                            const CustomTextWidget(
+                                              text: 'Category: Chinese',
+                                              fontSize: 12.0,
+                                              fontWeight: FontWeight.w400,
+                                            ),
+                                            const SizedBox(height: 8.0),
+                                            const CustomTextWidget(
+                                              text: 'Valid till: 12/12/2025',
+                                              fontSize: 12.0,
+                                              fontWeight: FontWeight.w400,
+                                            ),
+                                            const SizedBox(height: 8.0),
+                                            Row(
+                                              children: [
+                                                const CustomTextWidget(
+                                                  text: 'Status: ',
+                                                  fontSize: 12.0,
+                                                  fontWeight: FontWeight.w400,
+                                                ),
+                                                Container(
+                                                  padding:
+                                                      const EdgeInsets.all(6.0),
+                                                  decoration: BoxDecoration(
+                                                    color:
+                                                        Colors.green.shade300,
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8.0),
+                                                  ),
+                                                  child: const CustomTextWidget(
+                                                    text: 'Active',
+                                                    fontSize: 10.0,
+                                                    fontWeight: FontWeight.w400,
+                                                  ),
+                                                ),
+                                              ],
+                                            )
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               );
                             }),
@@ -122,145 +220,7 @@ class MyMenuScreen extends StatelessWidget {
   }
 }
 
-class CustomMenuWidget extends StatelessWidget {
-  final int index;
-
-  const CustomMenuWidget({
-    super.key,
-    required this.index,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Column(
-        children: [
-          Stack(
-            children: [
-              Container(
-                height: 180,
-                width: 200,
-                decoration: BoxDecoration(
-                  color: Colors.grey.shade200,
-                  borderRadius: const BorderRadius.only(
-                    topLeft: Radius.circular(16.0),
-                    topRight: Radius.circular(16.0),
-                  ),
-                  border: Border.all(
-                    color: Colors.black12,
-                  ),
-                  image: const DecorationImage(
-                    image: NetworkImage(
-                      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgy4fA6FcmVFonQAeLKnoscu8yL3xKoSLJyQ&s',
-                    ),
-                    fit: BoxFit.cover,
-                  ),
-                ),
-              ),
-              Positioned(
-                  top: 8.0,
-                  right: 8.0,
-                  child: InkWell(
-                    onTap: () => openAddMenuDialog(context),
-                    child: Container(
-                      padding: const EdgeInsets.all(4.0),
-                      decoration: const BoxDecoration(
-                          shape: BoxShape.circle, color: Colors.white70),
-                      child: Icon(
-                        Icons.edit,
-                        color: AppColors.primaryColor,
-                        size: 16.0,
-                      ),
-                    ),
-                  )),
-            ],
-          ),
-          Container(
-            width: 200,
-            decoration: BoxDecoration(
-              color: Colors.grey.shade200,
-              border: Border.all(color: Colors.black12),
-              borderRadius: const BorderRadius.only(
-                bottomLeft: Radius.circular(16.0),
-                bottomRight: Radius.circular(16.0),
-              ),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  CustomTextWidget(
-                    text: 'Menu ${index + 1}',
-                    fontSize: 16.0,
-                    fontWeight: FontWeight.w500,
-                  ),
-                  const SizedBox(height: 8.0),
-                  CustomTextWidget(
-                    text: 'Price: \$${math.Random().nextInt(100)}',
-                    fontSize: 12.0,
-                    fontWeight: FontWeight.w400,
-                  ),
-                  const SizedBox(height: 8.0),
-                  const CustomTextWidget(
-                    text: 'Category: Chinese',
-                    fontSize: 12.0,
-                    fontWeight: FontWeight.w400,
-                  ),
-                  const SizedBox(height: 8.0),
-                  Row(
-                    children: [
-                      const CustomTextWidget(
-                        text: 'Reviews: ',
-                        fontSize: 12.0,
-                        fontWeight: FontWeight.w400,
-                      ),
-                      const SizedBox(width: 2.0),
-                      Row(
-                        children: List.generate(5, (index) {
-                          return const Icon(
-                            Icons.star,
-                            size: 14.0,
-                            color: Colors.amber,
-                          );
-                        }),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 8.0),
-                  Row(
-                    children: [
-                      const CustomTextWidget(
-                        text: 'Status: ',
-                        fontSize: 12.0,
-                        fontWeight: FontWeight.w400,
-                      ),
-                      Container(
-                        padding: const EdgeInsets.all(6.0),
-                        decoration: BoxDecoration(
-                          color: Colors.green.shade300,
-                          borderRadius: BorderRadius.circular(8.0),
-                        ),
-                        child: const CustomTextWidget(
-                          text: 'Active',
-                          fontSize: 10.0,
-                          fontWeight: FontWeight.w400,
-                        ),
-                      ),
-                    ],
-                  )
-                ],
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-void openAddMenuDialog(BuildContext context) {
+void openAddPromotionDialog(BuildContext context) {
   showGeneralDialog(
     context: context,
     barrierDismissible: true,
@@ -307,9 +267,10 @@ void openAddMenuDialog(BuildContext context) {
                   ],
                 ),
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     CustomTextWidget(
-                      text: 'Add Menu',
+                      text: 'Add Promotion',
                       textColor: AppColors.textColor,
                       fontWeight: FontWeight.w600,
                       fontSize: 18.0,
@@ -332,8 +293,8 @@ void openAddMenuDialog(BuildContext context) {
                       ),
                     ),
                     const SizedBox(height: 12.0),
-                    const HeadingAndTextfield(title: 'Menu Name'),
-                    const HeadingAndTextfield(title: 'Menu Price'),
+                    const HeadingAndTextfield(title: 'Promotion Name'),
+                    const HeadingAndTextfield(title: 'Discounted Price'),
                     const HeadingAndTextfield(title: 'Category'),
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 4.0),
@@ -341,7 +302,7 @@ void openAddMenuDialog(BuildContext context) {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           const CustomTextWidget(
-                            text: 'Status',
+                            text: 'Select Item',
                             fontWeight: FontWeight.w500,
                             maxLines: 2,
                             fontSize: 12,
@@ -351,20 +312,28 @@ void openAddMenuDialog(BuildContext context) {
                             child: DropdownButton<String>(
                               isExpanded: true,
                               underline: const SizedBox.shrink(),
-                              value: 'Active',
+                              value: 'Item 1',
                               items: const [
                                 DropdownMenuItem(
-                                  value: 'Active',
+                                  value: 'Item 1',
                                   child: CustomTextWidget(
-                                    text: 'Active',
+                                    text: 'Item 1',
                                     fontSize: 12.0,
                                     fontWeight: FontWeight.w400,
                                   ),
                                 ),
                                 DropdownMenuItem(
-                                  value: 'In Active',
+                                  value: 'Item 2',
                                   child: CustomTextWidget(
-                                    text: 'In Active',
+                                    text: 'Item 2',
+                                    fontSize: 12.0,
+                                    fontWeight: FontWeight.w400,
+                                  ),
+                                ),
+                                DropdownMenuItem(
+                                  value: 'Item 3',
+                                  child: CustomTextWidget(
+                                    text: 'Item 3',
                                     fontSize: 12.0,
                                     fontWeight: FontWeight.w400,
                                   ),
@@ -377,6 +346,13 @@ void openAddMenuDialog(BuildContext context) {
                           ),
                         ],
                       ),
+                    ),
+                    const Row(
+                      children: [
+                        Flexible(
+                            child: HeadingAndTextfield(title: 'Start Date')),
+                        Flexible(child: HeadingAndTextfield(title: 'End Date')),
+                      ],
                     ),
                     Row(
                       children: [
@@ -406,60 +382,4 @@ void openAddMenuDialog(BuildContext context) {
       );
     },
   );
-}
-
-class MyDottedBorderContainer extends StatelessWidget {
-  final Widget child;
-  final BorderRadius borderRadius;
-
-  const MyDottedBorderContainer(
-      {super.key, required this.child, this.borderRadius = BorderRadius.zero});
-
-  @override
-  Widget build(BuildContext context) {
-    return CustomPaint(
-      painter: DottedBorderPainter(borderRadius: borderRadius),
-      child: ClipRRect(
-        borderRadius: borderRadius,
-        child: child,
-      ),
-    );
-  }
-}
-
-class DottedBorderPainter extends CustomPainter {
-  final BorderRadius borderRadius;
-
-  DottedBorderPainter({required this.borderRadius});
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    double dashWidth = 4.0;
-    double dashSpace = 3.0;
-    final paint = Paint()
-      ..color = Colors.grey
-      ..strokeWidth = 2
-      ..style = PaintingStyle.stroke;
-
-    final RRect outer =
-        borderRadius.toRRect(Rect.fromLTWH(0, 0, size.width, size.height));
-    final Path path = Path()..addRRect(outer);
-
-    PathMetrics pathMetrics = path.computeMetrics();
-    for (PathMetric pathMetric in pathMetrics) {
-      double distance = 0.0;
-      while (distance < pathMetric.length) {
-        final tangent = pathMetric.getTangentForOffset(distance);
-        final offset = tangent!.position;
-        final end =
-            pathMetric.getTangentForOffset(distance + dashWidth)?.position ??
-                tangent.position;
-        canvas.drawLine(offset, end, paint);
-        distance += dashWidth + dashSpace;
-      }
-    }
-  }
-
-  @override
-  bool shouldRepaint(CustomPainter oldDelegate) => false;
 }

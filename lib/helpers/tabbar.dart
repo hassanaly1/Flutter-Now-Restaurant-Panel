@@ -38,14 +38,14 @@ class CustomTabBar extends StatelessWidget {
         labelStyle: const TextStyle(
             fontSize: 12, fontWeight: FontWeight.w400, fontFamily: 'poppins'),
         labelColor: Colors.white,
-        unselectedLabelColor: Colors.blueAccent,
+        unselectedLabelColor: scaffoldBackgroundColor,
         indicatorSize: TabBarIndicatorSize.tab,
         // isScrollable: true,
         // tabAlignment: TabAlignment.center,
         tabs: [
           Tab(text: title1),
           Tab(text: title2),
-          Tab(text: title3),
+          if (title3 != null) Tab(text: title3),
         ],
       ),
     );

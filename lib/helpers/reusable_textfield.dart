@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:now_restaurant_panel/helpers/appcolors.dart';
-import 'package:now_restaurant_panel/reusable_container.dart';
+import 'package:now_restaurant_panel/helpers/reusable_container.dart';
 
 class ReUsableTextField extends StatelessWidget {
   final String hintText;
