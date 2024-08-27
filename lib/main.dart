@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:now_restaurant_panel/views/analytics/analytics.dart';
+import 'package:now_restaurant_panel/views/auth/login.dart';
 import 'package:now_restaurant_panel/views/menus/menus.dart';
 import 'package:now_restaurant_panel/views/orders/orders.dart';
 import 'package:now_restaurant_panel/views/profile/profile.dart';
@@ -17,11 +18,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: 'Flutter Demo',
+      title: 'Now',
       theme: ThemeData(
-        // primaryColor: primaryColor,
-        // canvasColor: canvasColor,
-
         scaffoldBackgroundColor: Colors.grey.shade200,
         textTheme: const TextTheme(
           headlineSmall: TextStyle(
@@ -32,7 +30,8 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      home: SidebarXExampleApp(),
+      debugShowCheckedModeBanner: false,
+      home: const LoginScreen(),
     );
   }
 }
@@ -56,12 +55,9 @@ class SidebarXExampleApp extends StatelessWidget {
                   title: Text(_getTitleByIndex(_controller.selectedIndex)),
                   leading: IconButton(
                     onPressed: () {
-                      // if (!Platform.isAndroid && !Platform.isIOS) {
-                      //   _controller.setExtended(true);
-                      // }
                       _key.currentState?.openDrawer();
                     },
-                    icon: const Icon(Icons.menu),
+                    icon: const Icon(Icons.menu, color: Colors.white70),
                   ),
                 )
               : null,

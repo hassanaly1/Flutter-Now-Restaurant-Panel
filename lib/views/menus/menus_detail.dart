@@ -162,7 +162,7 @@ class TodaysOrdersStats extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: Container(
         height: 300,
-        width: 250,
+        width: context.width > 1100 ? 250 : 200,
         decoration: BoxDecoration(
           color: Colors.grey.shade200,
           border: Border.all(color: Colors.black12),
@@ -313,16 +313,13 @@ class MyMenuImage extends StatelessWidget {
       width: context.width,
       decoration: BoxDecoration(
         color: Colors.grey.shade200,
-        borderRadius: const BorderRadius.only(
-          topLeft: Radius.circular(12.0),
-          topRight: Radius.circular(12.0),
-        ),
+        borderRadius: BorderRadius.circular(12.0),
         border: Border.all(
           color: Colors.black12,
         ),
         image: const DecorationImage(
-          image: NetworkImage(
-            'https://wallpapers.com/images/hd/food-4k-spdnpz7bhmx4kv2r.jpg',
+          image: AssetImage(
+            'assets/images/a.jpg',
           ),
           fit: BoxFit.cover,
         ),

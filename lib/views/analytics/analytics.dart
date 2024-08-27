@@ -81,31 +81,37 @@ class AnalyticsScreen extends StatelessWidget {
                   CustomStatsContainer(
                     backgroundColor: Colors.orange,
                     text: 'Total Revenue',
+                    icon: Icons.monetization_on,
                     stats: 28,
                   ),
                   CustomStatsContainer(
                     backgroundColor: Colors.teal,
                     text: 'Profit',
+                    icon: Icons.monetization_on,
                     stats: 73,
                   ),
                   CustomStatsContainer(
                     backgroundColor: Colors.green,
                     text: 'Number of Orders',
+                    icon: Icons.add_chart_sharp,
                     stats: 14,
                   ),
                   CustomStatsContainer(
                     backgroundColor: Colors.orange,
                     text: 'Canceled Orders',
+                    icon: Icons.cancel,
                     stats: 28,
                   ),
                   CustomStatsContainer(
                     backgroundColor: Colors.lightBlueAccent,
                     text: 'Completed Orders',
+                    icon: Icons.check_circle,
                     stats: 158,
                   ),
                   CustomStatsContainer(
                     backgroundColor: Colors.teal,
                     text: 'Returns',
+                    icon: Icons.keyboard_return,
                     stats: 73,
                   ),
                 ],
@@ -191,12 +197,14 @@ class CustomStatsContainer extends StatelessWidget {
   final String text;
   final int stats;
   final Color backgroundColor;
+  final IconData icon;
 
   const CustomStatsContainer({
     super.key,
     required this.backgroundColor,
     required this.text,
     required this.stats,
+    required this.icon,
   });
 
   @override
@@ -206,7 +214,7 @@ class CustomStatsContainer extends StatelessWidget {
       child: Container(
         width: 220,
         decoration: BoxDecoration(
-          color: backgroundColor,
+          color: Colors.deepPurple.withOpacity(0.2),
           borderRadius: BorderRadius.circular(12.0),
           border: Border.all(color: Colors.black12),
         ),
@@ -215,8 +223,12 @@ class CustomStatsContainer extends StatelessWidget {
             Container(
               height: 120,
               width: 60,
-              color: Colors.black.withOpacity(0.2),
-              child: const Icon(Icons.ac_unit),
+              decoration: BoxDecoration(
+                color: Colors.black.withOpacity(0.2),
+                borderRadius: BorderRadius.circular(12.0),
+                border: Border.all(color: Colors.black12),
+              ),
+              child: Icon(icon),
             ),
             const SizedBox(width: 8.0),
             Expanded(
